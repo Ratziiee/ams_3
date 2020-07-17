@@ -51,7 +51,7 @@ module.exports.get_userFromMobileNo = (req,res) => {
 
     let MOBILE = req.query.mobile;
 
-    var query = `SELECT * FROM public.user_master where mobile = '${MOBILE}`;
+    var query = `SELECT * FROM public.user_master where mobile = '${MOBILE}'`;
     debugger
     db.any(query).then((data) => {
         console.log('data aaya',data);
