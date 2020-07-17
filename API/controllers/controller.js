@@ -33,7 +33,7 @@ module.exports.post_loginDataToServer = (req,res) => {
 
     let query =`INSERT INTO public.user_master(
         mobile, password, username)
-        VALUES ('${MOBILE}', '${PWD}', ${USERNAME}')`;
+        VALUES ('${MOBILE}', '${PWD}', '${USERNAME}')`;
     
     let query_2 = `SELECT * FROM public.user_master where mobile = '${MOBILE}'`
 
@@ -50,7 +50,7 @@ module.exports.post_loginDataToServer = (req,res) => {
 module.exports.get_userFromMobileNo = (req,res) => {
 
     let MOBILE = req.query.mobile;
-    
+
     var query = `SELECT * FROM public.user_master where mobile = '${MOBILE}`;
     debugger
     db.any(query).then((data) => {
