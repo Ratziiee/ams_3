@@ -24,6 +24,7 @@ module.exports.post_loginDataToServer = (req,res) => {
     let USERNAME = req.query.username;
     let USERID="ID_"+req.query.build_no;
     let UNIQUE_DEVICE_ID=req.query.build_no;
+    let COUNTRY_CODE = req.query.country_code;
 
 
     // let query = `id SERIAL PRIMARY KEY,
@@ -34,8 +35,8 @@ module.exports.post_loginDataToServer = (req,res) => {
     // unique_device_id text`;
 
     let query =`INSERT INTO public.user_master(
-        mobile, password, user_id ,username, unique_device_id)
-        VALUES ('${MOBILE}', '${PWD}', '${USERID}' ,'${USERNAME}', '${UNIQUE_DEVICE_ID}')`;
+        mobile, password, user_id ,username, unique_device_id,country_code)
+        VALUES ('${MOBILE}', '${PWD}', '${USERID}' ,'${USERNAME}', '${UNIQUE_DEVICE_ID}','${COUNTRY_CODE}')`;
     
 
         db.query(query).then((data) => {
