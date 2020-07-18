@@ -64,6 +64,24 @@ module.exports.get_userFromMobileNo = (req,res) => {
     });
 }
 
+module.exports.post_updatePassword = (req,res) => {
+
+    let MOBILE = req.query.mobile;
+    let PWD = req.query.pwd;
+
+
+    let query =`UPDATE public.user_master SET password = '${PWD}' WHERE mobile = '${MOBILE}'`;
+    
+
+        db.query(query).then((data) => {
+
+            
+            res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        }).catch((error) => {
+            res.send({statusCode : 500, message : error.message,data : []});
+        });
+}
+
 
 
 
