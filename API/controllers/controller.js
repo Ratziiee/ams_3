@@ -125,9 +125,9 @@ module.exports.post_updateAdmin = (req,res) => {
     let ISADMIN = true;
     let ORGANIZATION_NAME = req.query.org_name;
 
-    var res = ORGANIZATION_NAME.split(" ");
+    var split = ORGANIZATION_NAME.split(" ");
     var time = Date.now(); 
-    let ORGANIZATION_CODE = `${res[0]}_${time}`;
+    let ORGANIZATION_CODE = `${split[0]}_${time}`;
 
 
     let query =`UPDATE public.user_master SET organization_name = '${ORGANIZATION_NAME}', organization_code = '${ORGANIZATION_CODE}', isAdmin = ${ISADMIN} 
