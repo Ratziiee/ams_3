@@ -104,11 +104,12 @@ module.exports.post_organizationMaster = (req,res) => {
     let ORGANIZATION_NAME = req.query.org_name;
     let INDUSTRY = req.query.industry;
     let COUNTRY = req.query.country;
+    let ORG_CODE = req.query.org_code;
 
 
     let query =`INSERT INTO public.organization_master(
-        organization_name, industry ,country)
-        VALUES ('${ORGANIZATION_NAME}', '${INDUSTRY}', '${COUNTRY}')`;
+        organization_name, organization_code ,industry ,country)
+        VALUES ('${ORGANIZATION_NAME}', '${ORG_CODE}' ,'${INDUSTRY}', '${COUNTRY}')`;
     
 
         db.query(query).then((data) => {
