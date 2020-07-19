@@ -119,6 +119,30 @@ module.exports.post_organizationMaster = (req,res) => {
         });
 }
 
+module.exports.post_updateAdmin = (req,res) => {
+
+    let MOBILE = req.query.mobile;
+    let ISADMIN = true;
+    let ORGANIZATION_NAME = req.query.org_name;
+
+    var res = ORGANIZATION_NAME.split(" ");
+    var time = Date.now(); 
+    let ORGANIZATION_CODE = `${res[0]}_${time}`;
+
+
+    let query =`UPDATE public.user_master SET organization_name = '${ORGANIZATION_NAME}', organization_code = '${ORGANIZATION_CODE}', isAdmin = ${ISADMIN} 
+     WHERE mobile = '${MOBILE}'`;
+    
+    
+        db.query(query).then((data) => {
+
+            
+            res.send({statusCode : 200, message : "Data Successfully Saved", data:[{org_name : ORGANIZATION_NAME, org_code, ORGANIZATION_CODE, mobile :MOBILE }]});
+        }).catch((error) => {
+            res.send({statusCode : 500, message : error.message,data : []});
+        });
+}
+
 
 
 
