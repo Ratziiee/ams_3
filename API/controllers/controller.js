@@ -130,14 +130,14 @@ module.exports.post_updateAdmin = (req,res) => {
     let ORGANIZATION_CODE = `${split[0]}_${time}`;
 
 
-    let query =`UPDATE public.user_master SET organization_name = '${ORGANIZATION_NAME}', organization_code = '${ORGANIZATION_CODE}', isAdmin = ${ISADMIN} 
+    let query =`UPDATE public.user_master SET organization_name = '${ORGANIZATION_NAME}', organization_code = '${ORGANIZATION_CODE}', is_admin = ${ISADMIN} 
      WHERE mobile = '${MOBILE}'`;
     
     
         db.query(query).then((data) => {
 
             
-            res.send({statusCode : 200, message : "Data Successfully Saved", data:[{org_name : ORGANIZATION_NAME, org_code, ORGANIZATION_CODE, mobile :MOBILE }]});
+            res.send({statusCode : 200, message : "Data Successfully Saved", data:[{org_name : ORGANIZATION_NAME, org_code: ORGANIZATION_CODE, mobile :MOBILE }]});
         }).catch((error) => {
             res.send({statusCode : 500, message : error.message,data : []});
         });
