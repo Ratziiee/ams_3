@@ -99,6 +99,26 @@ module.exports.get_Login = (req,res) => {
     });
 }
 
+module.exports.post_organizationMaster = (req,res) => {
+
+    let ORGANIZATION_NAME = req.query.org_name;
+    let INDUSTRY = req.query.industry;
+    let COUNTRY = req.query.country;
+
+
+    let query =`INSERT INTO public.organization_master(
+        organization_name, industry ,country)
+        VALUES ('${ORGANIZATION_NAME}', '${INDUSTRY}', '${COUNTRY}')`;
+    
+
+        db.query(query).then((data) => {
+
+            res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        }).catch((error) => {
+            res.send({statusCode : 500, message : error.message,data : []});
+        });
+}
+
 
 
 
