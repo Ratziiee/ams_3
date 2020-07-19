@@ -37,7 +37,7 @@ module.exports.post_loginDataToServer = (req,res) => {
 
     let query =`INSERT INTO public.user_master(
         mobile, password, user_id ,username, unique_device_id,country_code,is_admin)
-        VALUES ('${MOBILE}', '${PWD}', '${USERID}' ,'${USERNAME}', '${UNIQUE_DEVICE_ID}','${COUNTRY_CODE},${ISADMIN}')`;
+        VALUES ('${MOBILE}', '${PWD}', '${USERID}' ,'${USERNAME}', '${UNIQUE_DEVICE_ID}','${COUNTRY_CODE}',${ISADMIN})`;
     
 
         db.query(query).then((data) => {
