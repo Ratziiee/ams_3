@@ -11,6 +11,7 @@ router.post('/post_organizationMaster',controller.post_organizationMaster);
 router.post('/post_updateAdmin',controller.post_updateAdmin);
 router.get('/get_org_details',controller.get_org_details);
 router.post('/post_addDataForApproval',controller.post_addDataForApproval);
+router.get('/get_org_requests',controller.get_org_requests);
 
 
 

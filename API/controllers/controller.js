@@ -185,7 +185,22 @@ module.exports.post_addDataForApproval = (req,res) => {
         });
 }
 
+module.exports.get_org_requests = (req,res) => {
 
+
+    let ORG_CODE = req.query.org_code;
+
+
+    var query = `SELECT * FROM public.organization_approval where organization_code = '${ORG_CODE}' and is_approved = false`;
+    
+
+        db.query(query).then((data) => {
+
+            res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        }).catch((error) => {
+            res.send({statusCode : 500, message : error.message,data : []});
+        });
+}
 
 
 
