@@ -223,6 +223,22 @@ module.exports.post_updateUser = (req,res) => {
         });
 }
 
+module.exports.post_UpdateDataForApproval = (req,res) => {
+
+    let MOBILE = req.query.mobile;
+    let ISAPPROVED = true;
+    let ORGANIZATION_CODE = req.query.org_code;
+
+    
+        let query =`UPDATE public.organization_approval SET is_approved = '${ISAPPROVED}' WHERE user_mobile = '${MOBILE}' and organization_code = '${ORGANIZATION_CODE}'`;
+    
+        db.query(query).then((data) => {
+            res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        }).catch((error) => {
+            res.send({statusCode : 500, message : error.message,data : []});
+        });
+}
+
 
 
 

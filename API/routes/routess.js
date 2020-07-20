@@ -13,6 +13,8 @@ router.get('/get_org_details',controller.get_org_details);
 router.post('/post_addDataForApproval',controller.post_addDataForApproval);
 router.get('/get_org_requests',controller.get_org_requests);
 router.post('/post_updateUser',controller.post_updateUser);
+router.post('/post_UpdateDataForApproval',controller.post_UpdateDataForApproval);
+
 
 
 
