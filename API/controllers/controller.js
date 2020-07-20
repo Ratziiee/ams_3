@@ -162,6 +162,29 @@ module.exports.get_org_details = (req,res) => {
         });
 }
 
+module.exports.post_addDataForApproval = (req,res) => {
+
+    let MOBILE = req.query.mobile;
+    let ISAPPROVED = false;
+    let ORGANIZATION_NAME = req.query.org_name;
+    var TIMESTAMP = Date.now(); 
+    let ORGANIZATION_CODE = req.query.org_code;
+
+
+    let query =`INSERT INTO public.organization_approval(
+        organization_name, organization_code ,user_mobile ,timestamp, is_approved)
+        VALUES ('${ORGANIZATION_NAME}', '${ORGANIZATION_CODE}' ,'${MOBILE}', '${TIMESTAMP}','${ISAPPROVED}')`;
+    
+    
+        db.query(query).then((data) => {
+
+            
+            res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        }).catch((error) => {
+            res.send({statusCode : 500, message : error.message,data : []});
+        });
+}
+
 
 
 
