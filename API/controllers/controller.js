@@ -226,6 +226,19 @@ module.exports.post_updateUser = (req,res) => {
 module.exports.post_UpdateDataForApproval = (req,res) => {
 
     let MOBILE = req.query.mobile;
+    
+    var query = `SELECT * FROM public.organization_approval where user_mobile = '${MOBILE}'`;
+    
+        db.query(query).then((data) => {
+            res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        }).catch((error) => {
+            res.send({statusCode : 500, message : error.message,data : []});
+        });
+}
+
+module.exports.get_Approval_Status = (req,res) => {
+
+    let MOBILE = req.query.mobile;
     let ISAPPROVED = true;
     let ORGANIZATION_CODE = req.query.org_code;
 
