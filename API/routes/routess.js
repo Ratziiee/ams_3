@@ -14,6 +14,7 @@ router.post('/post_addDataForApproval',controller.post_addDataForApproval);
 router.get('/get_org_requests',controller.get_org_requests);
 router.post('/post_updateUser',controller.post_updateUser);
 router.post('/post_UpdateDataForApproval',controller.post_UpdateDataForApproval);
+router.get('/get_Approval_Status',controller.get_Approval_Status);
 
 
 
