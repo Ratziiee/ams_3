@@ -16,6 +16,8 @@ router.post('/post_updateUser',controller.post_updateUser);
 router.post('/post_UpdateDataForApproval',controller.post_UpdateDataForApproval);
 router.get('/get_Approval_Status',controller.get_Approval_Status);
 router.get('/get_Rejection_Request',controller.get_Rejection_Request);
+router.post('post_organization_details',controller.post_organization_details);
+router.post('post_update_organization_work_days',controller.post_update_organization_work_days);
 
 
 

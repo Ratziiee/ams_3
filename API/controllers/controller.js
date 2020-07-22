@@ -269,6 +269,44 @@ module.exports.get_Rejection_Request = (req,res) => {
         });
 }
 
+module.exports.post_organization_details = (req,res) => {
+
+    let ORGANIZATION_CODE = req.query.org_code;
+    let WORK_DAYS = req.query.work_days;
+
+
+    let query =`INSERT INTO public.organization_details(
+        work_days, organization_code)
+        VALUES ('${WORK_DAYS}', '${ORGANIZATION_CODE}')`;
+    
+    
+        db.query(query).then((data) => {
+
+            
+            res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        }).catch((error) => {
+            res.send({statusCode : 500, message : error.message,data : []});
+        });
+}
+
+module.exports.post_update_organization_work_days = (req,res) => {
+
+    let ORGANIZATION_CODE = req.query.org_code;
+    let WORK_DAYS = req.query.work_days;
+
+    let query =`UPDATE public.organization_details SET work_days = '${WORK_DAYS}' 
+    WHERE organization_code = '${ORGANIZATION_CODE}'`;
+
+    
+    
+        db.query(query).then((data) => {
+
+            
+            res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        }).catch((error) => {
+            res.send({statusCode : 500, message : error.message,data : []});
+        });
+}
 
 
 
