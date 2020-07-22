@@ -253,6 +253,22 @@ module.exports.get_Approval_Status = (req,res) => {
         });
 }
 
+module.exports.get_Rejection_Request = (req,res) => {
+
+    let MOBILE = req.query.mobile;
+    let IS_APPROVED = false;
+
+    var query = `DELETE FROM public.organization_approval
+    WHERE user_mobile = '${MOBILE}' and is_approved = ${IS_APPROVED}`
+   
+ 
+        db.query(query).then((data) => {
+            res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        }).catch((error) => {
+            res.send({statusCode : 500, message : error.message,data : []});
+        });
+}
+
 
 
 
