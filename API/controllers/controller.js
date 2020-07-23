@@ -326,5 +326,35 @@ module.exports.get_organization_work_days = (req,res) => {
         });
 }
 
+module.exports.post_update_organization_work_hours = (req,res) => {
+
+    let ORGANIZATION_CODE = req.query.org_code;
+    let WORK_TIME = req.query.work_time;
+    let INOROUT = req.query.get_status;
+
+    let query = "";
+    if(INOROUT === 'IN')
+    {
+        query =`UPDATE public.organization_details SET work_time_in = '${WORK_TIME}' 
+        WHERE organization_code = '${ORGANIZATION_CODE}'`;
+    }
+    else
+    {
+        query =`UPDATE public.organization_details SET work_time_out = '${WORK_TIME}' 
+        WHERE organization_code = '${ORGANIZATION_CODE}'`;
+    }
+
+    
+        db.query(query).then((data) => {
+
+            
+            res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        }).catch((error) => {
+            res.send({statusCode : 500, message : error.message,data : []});
+        });
+}
+
+
+
 
 
