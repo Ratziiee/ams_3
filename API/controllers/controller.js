@@ -308,5 +308,23 @@ module.exports.post_update_organization_work_days = (req,res) => {
         });
 }
 
+module.exports.get_organization_work_days = (req,res) => {
+
+    let ORGANIZATION_CODE = req.query.org_code;
+    
+    let query =`SELECT work_days from public.organization_details
+    WHERE organization_code = '${ORGANIZATION_CODE}'`;
+
+    
+    
+        db.query(query).then((data) => {
+
+            
+            res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        }).catch((error) => {
+            res.send({statusCode : 500, message : error.message,data : []});
+        });
+}
+
 
 
