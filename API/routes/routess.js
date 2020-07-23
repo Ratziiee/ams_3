@@ -24,7 +24,7 @@ router.post('/post_update_organization_work_hours',controller.post_update_organi
 router.post('/post_update_organization_office_location',controller.post_update_organization_office_location);
 
 router.post('/post_attendance_data',controller.post_attendance_data);
-router.post('/get_attendance_data',controller.get_attendance_data);
+router.get('/get_attendance_data',controller.get_attendance_data);
 
 
 
