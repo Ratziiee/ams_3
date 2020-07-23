@@ -375,5 +375,25 @@ module.exports.post_update_organization_office_location = (req,res) => {
         });
 }
 
+module.exports.post_attendance_data = (req,res) => {
+
+    let MOBILE = req.query.mobile;
+    let ORG_CODE = req.query.org_code;
+    let USERNAME = req.query.username;
+    let USERID=req.query.userid;
+    let STATUS=req.query.status;
+    var TIMESTAMP = Date.now(); 
+    
+    let query =`INSERT INTO public.attendance_master(
+        timestamp, mobile, username, userid, status, org_code)
+        VALUES ('${TIMESTAMP}', '${MOBILE}', '${USERNAME}' ,'${USERID}', '${STATUS}','${ORG_CODE}')`;
+    
+        db.query(query).then((data) => {
+            res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        }).catch((error) => {
+            res.send({statusCode : 500, message : error.message,data : []});
+        });
+}
+
 
 

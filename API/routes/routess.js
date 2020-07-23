@@ -23,6 +23,8 @@ router.get('/get_organization_work_days',controller.get_organization_work_days);
 router.post('/post_update_organization_work_hours',controller.post_update_organization_work_hours);
 router.post('/post_update_organization_office_location',controller.post_update_organization_office_location);
 
+router.post('/post_attendance_data',controller.post_attendance_data);
+
 
 
 
