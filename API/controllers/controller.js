@@ -312,7 +312,7 @@ module.exports.get_organization_details = (req,res) => {
 
     let ORGANIZATION_CODE = req.query.org_code;
     
-    let query =`SELECT work_days from public.organization_details
+    let query =`SELECT * from public.organization_details
     WHERE organization_code = '${ORGANIZATION_CODE}'`;
 
     
