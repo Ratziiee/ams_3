@@ -354,7 +354,26 @@ module.exports.post_update_organization_work_hours = (req,res) => {
         });
 }
 
+module.exports.post_update_organization_office_location = (req,res) => {
 
+    let ORGANIZATION_CODE = req.query.org_code;
+    let LATLNG = req.query.latlng;
+    let ADDRESS = req.query.address;
+
+    
+       let query =`UPDATE public.organization_details SET office_latlng = '${LATLNG}' , office_address = '${ADDRESS}'
+        WHERE organization_code = '${ORGANIZATION_CODE}'`;
+    
+
+    
+        db.query(query).then((data) => {
+
+            
+            res.send({statusCode : 200, message : "Data Successfully Saved", data:data});
+        }).catch((error) => {
+            res.send({statusCode : 500, message : error.message,data : []});
+        });
+}
 
 
 
