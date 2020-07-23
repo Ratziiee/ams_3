@@ -18,7 +18,7 @@ router.get('/get_Approval_Status',controller.get_Approval_Status);
 router.get('/get_Rejection_Request',controller.get_Rejection_Request);
 router.post('/post_organization_details',controller.post_organization_details);
 router.post('/post_update_organization_work_days',controller.post_update_organization_work_days);
-router.get('/get_organization_work_days',controller.get_organization_work_days);
+router.get('/get_organization_work_days',controller.get_organization_details);
 
 router.post('/post_update_organization_work_hours',controller.post_update_organization_work_hours);
 router.post('/post_update_organization_office_location',controller.post_update_organization_office_location);

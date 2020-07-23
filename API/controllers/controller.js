@@ -308,7 +308,7 @@ module.exports.post_update_organization_work_days = (req,res) => {
         });
 }
 
-module.exports.get_organization_work_days = (req,res) => {
+module.exports.get_organization_details = (req,res) => {
 
     let ORGANIZATION_CODE = req.query.org_code;
     
